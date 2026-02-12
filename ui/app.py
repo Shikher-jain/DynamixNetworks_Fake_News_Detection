@@ -52,7 +52,7 @@ def run_local(text: str) -> dict:
 
 
 def run_api(text: str) -> dict:
-    response = requests.post(API_URL, json={"text": text}, timeout=30)
+    response = requests.post(f"{API_URL}/predict", json={"text": text}, timeout=30)
     response.raise_for_status()
     return response.json()
 
