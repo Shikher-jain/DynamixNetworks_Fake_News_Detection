@@ -49,6 +49,12 @@ def health() -> HealthResponse:
     return HealthResponse()
 
 
+@app.get("/")
+@app.post("/")
+def root():
+    return {"message": "Welcome to News Detector API. Use POST /predict with {'text': 'your news'} to analyze."}
+
+
 @app.post("/predict", response_model=PredictionResponse)
 def predict(request: PredictionRequest) -> PredictionResponse:
     try:
