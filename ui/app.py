@@ -75,7 +75,7 @@ if st.button("Analyze", type="primary"):
         try:
             result = run_api(text) if mode == "API" else run_local(text)
         except Exception as exc:  # pragma: no cover - user feedback only
-            st.error(f"Inference failed: {exc}")
+            st.error(f"Issue Occcur: {exc}")
         else:
             label = result["label"].title()
             confidence = result["confidence"]
