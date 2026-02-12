@@ -15,7 +15,18 @@ from src.fnd.models.pipeline import FakeNewsPipeline, PipelineArtifacts
 
 st.set_page_config(page_title="News Detector", layout="wide")
 
-API_URL = os.getenv("API_URL", "http://localhost:8000")  # Set to Render URL in production
+def get_api_url():
+    """Try deployed API first, fallback to localhost if not reachable."""
+    api_url = st.secrets.get("API_URL", "http://localhost:8000")
+    try:
+        response = requests.get(f"{api_url}/health", timeout=5)
+        if response.status_code == 200:
+            return api_url
+    except:
+        pass
+    return "http://localhost:8000"
+
+API_URL = get_api_url()
 MODEL_ARTIFACTS = PipelineArtifacts(
     model_path=Path(os.getenv("FND_MODEL_PATH", "models/baseline.joblib")),
     vectorizer_path=Path(os.getenv("FND_VECTOR_PATH", "models/vectorizer.joblib")),
