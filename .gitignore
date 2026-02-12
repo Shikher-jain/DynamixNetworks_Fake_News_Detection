@@ -11,8 +11,7 @@ __pycache__/
 *.egg-info/
 
 # Data & models
-
-/models/
+/data/
 /notebooks/*.ipynb_checkpoints/
 
 # Tooling
