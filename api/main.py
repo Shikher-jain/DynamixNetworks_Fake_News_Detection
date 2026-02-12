@@ -66,7 +66,7 @@ def predict(request: PredictionRequest) -> PredictionResponse:
         probs = model.predict_proba([request.text])[0]
         label = model.predict([request.text])[0]
     except Exception as exc:  # pragma: no cover
-        raise HTTPException(status_code=500, detail="Inference failed") from exc
+        raise HTTPException(status_code=500, detail="Issue") from exc
 
     return PredictionResponse(
         label=label,
