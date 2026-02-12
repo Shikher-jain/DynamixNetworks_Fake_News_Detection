@@ -1,0 +1,11 @@
+# filepath: News_Detector/requirements.txt
+fastapi==0.129.0
+uvicorn[standard]==0.40.0
+scikit-learn==1.8.0
+pandas==2.3.3
+numpy==2.3.5
+shap==0.50.0
+joblib==1.5.3
+python-dotenv==1.2.1
+streamlit==1.52.2
+nltk==3.9.2

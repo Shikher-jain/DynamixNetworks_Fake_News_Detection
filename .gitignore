@@ -1,0 +1,25 @@
+# Environments
+.venv/
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+
+# Data & models
+/data/raw/
+/data/processed/
+/models/
+/notebooks/*.ipynb_checkpoints/
+
+# Tooling
+/.streamlit/
+/.pytest_cache/
+
+# Editors
+.vscode/
+.DS_Store

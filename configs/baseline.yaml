@@ -1,0 +1,35 @@
+experiment_name: baseline-logreg
+random_seed: 42
+data:
+  input_csv: data/raw/fake_news.csv
+  text_column: text
+  title_column: title
+  label_column: type
+  sample_frac: 0.1
+  # language_column: language
+  # language_filter: english
+split:
+  test_size: 0.2
+  stratify: true
+features:
+  lowercase: true
+  remove_stopwords: true
+  vectorizer:
+    type: tfidf
+    params:
+      max_features: 50000
+      ngram_range: [1, 2]
+model:
+  type: logistic_regression
+  params:
+    C: 2.0
+    class_weight: balanced
+training:
+  max_iter: 200
+  n_jobs: -1
+  calibration: true
+artifacts:
+  model_path: models/baseline.joblib
+  vectorizer_path: models/vectorizer.joblib
+  label_path: models/labels.json
+metrics_path: models/metrics.json
