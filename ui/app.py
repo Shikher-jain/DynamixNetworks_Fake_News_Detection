@@ -53,6 +53,8 @@ def run_local(text: str) -> dict:
 
 def run_api(text: str) -> dict:
     response = requests.post(f"{API_URL}/predict", json={"text": text}, timeout=30)
+    if response.status_code == 503:
+        raise Exception("The backend is currently sleeping. Please try again in a few minutes.")
     response.raise_for_status()
     return response.json()
 
